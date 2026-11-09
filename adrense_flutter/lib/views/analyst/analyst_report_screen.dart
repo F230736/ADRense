@@ -1,0 +1,18 @@
+part of '../../main.dart';
+
+extension _AnalystreportViews on _ADRenseAppState {
+  Widget analystReportDetail()=>Column(crossAxisAlignment:CrossAxisAlignment.start,children:[
+    analystTopBar(),gap(8),analystCounters(),gap(12),
+    InkWell(onTap:()=>selectAnalystTab('Reports'),child:Text('‹  Back to Reports',style:TextStyle(color:P.muted,fontSize:12))),gap(14),
+    Container(width:double.infinity,padding:EdgeInsets.all(18),decoration:BoxDecoration(color:P.light?Color(0xFFF2EDFF):_ADRenseAppState.analystBg,border:Border.all(color:_ADRenseAppState.analystPurple.withValues(alpha:.35)),borderRadius:BorderRadius.circular(16)),child:Column(crossAxisAlignment:CrossAxisAlignment.start,children:[analystLabel('ADR MONITORING REPORT'),gap(11),Text(selectedReportDrug,style:TextStyle(fontSize:24,fontWeight:FontWeight.w800)),gap(5),Text('Period: Jan–Aug 2026',style:TextStyle(color:P.muted,fontSize:11)),gap(12),Wrap(spacing:8,children:[badge('Generated',color:P.success),badge('Aug 2026',color:P.muted)])])),gap(14),
+    GridView.count(shrinkWrap:true,physics:NeverScrollableScrollPhysics(),crossAxisCount:2,mainAxisSpacing:9,crossAxisSpacing:9,childAspectRatio:1.75,children:[
+      for(final d in [('8,421','Total Reports',P.teal),('1,234','ADR Reports',P.warning),('14.7%','ADR Rate',P.warning),('1','Potential Signals',P.danger)])
+        card(Column(crossAxisAlignment:CrossAxisAlignment.start,mainAxisAlignment:MainAxisAlignment.center,children:[Text(d.$1,style:TextStyle(fontSize:21,fontWeight:FontWeight.w800,color:d.$3)),gap(5),Text(d.$2,style:TextStyle(color:P.muted,fontSize:10))]),padding:EdgeInsets.all(12)),
+    ]),gap(13),
+    card(Column(crossAxisAlignment:CrossAxisAlignment.start,children:[Text('Most Reported ADRs',style:TextStyle(fontWeight:FontWeight.w700,fontSize:13)),gap(13),for(final a in [('Nausea',31,P.success),('GI Discomfort',22,P.success),('Lactic Acidosis',18,P.danger),('B12 Deficiency',12,P.warning),('Diarrhoea',10,P.success)]) ...[Row(children:[Expanded(child:Text(a.$1,style:TextStyle(fontSize:11,fontWeight:FontWeight.w700))),Text('${a.$2}%',style:TextStyle(color:P.muted,fontSize:11))]),gap(6),LinearProgressIndicator(value:a.$2/100,minHeight:4,backgroundColor:P.surface3,valueColor:AlwaysStoppedAnimation(a.$3)),gap(13)]])),gap(13),
+    card(Column(crossAxisAlignment:CrossAxisAlignment.start,children:[Text('Safety Signal Summary',style:TextStyle(fontWeight:FontWeight.w700)),gap(10),rowKV('Potential Signals','1',color:P.danger),rowKV('Verified Signals','0',color:P.success),rowKV('Under Investigation','0',color:P.warning),rowKV('Rejected Signals','0',color:P.muted)])),gap(13),
+    card(Column(crossAxisAlignment:CrossAxisAlignment.start,children:[Text('Analyst Review Summary',style:TextStyle(fontWeight:FontWeight.w700)),gap(10),rowKV('Predictions Reviewed','${findings.where((f)=>f['status']!='Pending').length}'),for(final status in ['Verified','Rejected','Corrected'])rowKV(status=='Corrected'?'Corrected (Training Data)':status,'${findings.where((f)=>f['status']==status).length}') ])),gap(13),
+    card(Text('Analyst access is restricted to users who provide professional credentials verified through an appropriate professional registry where available, or reviewed by an authorized system administrator. This report does not constitute a regulatory decision.',style:TextStyle(color:P.muted,fontSize:11,height:1.7))),gap(12),
+    SizedBox(width:double.infinity,child:OutlinedButton.icon(onPressed:()=>toast('PDF export requires backend integration'),icon:Icon(Icons.download_outlined),label:Text('Export Report (PDF)'),style:OutlinedButton.styleFrom(foregroundColor:_ADRenseAppState.analystPurple,side:BorderSide(color:_ADRenseAppState.analystPurple.withValues(alpha:.5))))),
+  ]);
+}

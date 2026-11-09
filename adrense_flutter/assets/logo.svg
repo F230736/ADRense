@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <!-- Matte Midnight Slate Base Gradient -->
+    <linearGradient id="bgSlate" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0F172A" />
+      <stop offset="100%" stop-color="#1E293B" />
+    </linearGradient>
+
+    <!-- Bio-Cyan AI Vector Gradient -->
+    <linearGradient id="bioCyanGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00F2FE" />
+      <stop offset="100%" stop-color="#4FACFE" />
+    </linearGradient>
+
+    <!-- Capsule Gradient -->
+    <linearGradient id="capsuleGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#10B981" />
+      <stop offset="100%" stop-color="#00F2FE" />
+    </linearGradient>
+  </defs>
+
+  <!-- App Icon Base Background -->
+  <rect width="512" height="512" rx="112" fill="url(#bgSlate)" />
+
+  <!-- Outer Orbital Vector Ring (Patient Similarity Axis) -->
+  <ellipse cx="256" cy="256" rx="170" ry="70" 
+           fill="none" 
+           stroke="url(#bioCyanGrad)" 
+           stroke-width="6" 
+           stroke-dasharray="12 8"
+           transform="rotate(-25 256 256)" 
+           opacity="0.85" />
+
+  <!-- Orbiting Similarity Nodes (Data Clusters) -->
+  <!-- Node 1: Top Left -->
+  <circle cx="130" cy="180" r="8" fill="#00F2FE" />
+  <line x1="130" y1="180" x2="210" y2="210" stroke="#00F2FE" stroke-width="2" opacity="0.6" />
+
+  <!-- Node 2: Bottom Right -->
+  <circle cx="380" cy="330" r="8" fill="#00F2FE" />
+  <line x1="380" y1="330" x2="300" y2="300" stroke="#00F2FE" stroke-width="2" opacity="0.6" />
+
+  <!-- Node 3: Top Right Verified Target Node -->
+  <circle cx="350" cy="170" r="12" fill="#10B981" stroke="#FFFFFF" stroke-width="3" />
+  <line x1="350" y1="170" x2="280" y2="200" stroke="#10B981" stroke-width="2" opacity="0.7" />
+
+  <!-- Central Geometric Capsule (Core Drug Entity) -->
+  <g transform="rotate(20 256 256)">
+    <!-- Capsule Outline Structure -->
+    <rect x="216" y="146" width="80" height="220" rx="40" 
+          fill="none" 
+          stroke="url(#capsuleGrad)" 
+          stroke-width="12" />
+    
+    <!-- Dividing Line (Drug / ADR Entity Boundary) -->
+    <line x1="216" y1="256" x2="296" y2="256" 
+          stroke="url(#bioCyanGrad)" 
+          stroke-width="8" />
+
+    <!-- Core Entity Node -->
+    <circle cx="256" cy="256" r="16" fill="#00F2FE" stroke="#0F172A" stroke-width="4" />
+  </g>
+</svg>
