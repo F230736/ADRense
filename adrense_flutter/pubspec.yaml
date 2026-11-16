@@ -1,0 +1,42 @@
+name: adrense_flutter
+description: ADRense Figma Make design port to Flutter
+publish_to: none
+version: 0.3.0+3
+environment:
+  sdk: '>=3.3.0 <4.0.0'
+dependencies:
+  flutter:
+    sdk: flutter
+  http: ^1.2.2
+  flutter_svg: ^2.0.10
+  flutter_animate: ^4.5.2
+  fl_chart: ^0.69.2
+  google_fonts: ^6.3.3
+  animations: ^2.0.11
+  flutter_slidable: ^3.1.2
+  flutter_staggered_animations: ^1.1.1
+  shimmer: ^3.0.0
+  file_picker: ^13.3.2
+  country_picker: ^2.0.28
+  pdfrx: ^2.12.0
+  country_flags: ^4.1.2
+  flutter_secure_storage: ^11.2.0
+  shared_preferences: ^2.5.6
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+  flutter_native_splash: ^2.4.4
+  shared_preferences_platform_interface: ^2.4.2
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/logo.svg
+
+flutter_native_splash:
+  color: "#071421"
+  image: assets/native_splash.png
+  android_12:
+    color: "#071421"
+    image: assets/native_splash.png
+  web: true
